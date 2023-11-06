@@ -1,0 +1,11 @@
+//Product
+import './App.css';
+import { useState } from 'react';
+
+class product {
+    constructor(ID, description, user) {
+        this.ID = ID;
+        this.description = description;
+        this.user = user;
+    }
+}
