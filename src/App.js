@@ -2,17 +2,20 @@ import './App.css';
 import { useState } from 'react';
 
 class Listing {
-  constructor(name, description, location, createdAt) {
+  constructor(name, description, location, createdAt, price) {
     this.name = name;
     this.description = description;
     this.location = location;
     this.createdAt = createdAt;
+    this.price = price;
   }
+
 }
 
 
+
 function ListingIndex({listings}) {
-  return <ul>{listings.map(listing => <li>{listing.location}, {listing.createdAt.toLocaleDateString('en-US')} - <b>{listing.name}</b>: {listing.description.substring(0,50)}</li>)}</ul>
+  return <ul>{listings.map(listing => <li>{listing.location}, {listing.createdAt.toLocaleDateString('en-US')} - <b>{listing.name}(Price: {listing.price})</b>: {listing.description.substring(0,50)}</li>)}</ul>
 }
 
 function ListingForm({listings, setListings}) {
@@ -39,12 +42,20 @@ function ListingForm({listings, setListings}) {
     })
   }
 
+  function handlePriceChange(price){
+    setListing({
+      ...listing,
+      price: price.target.value
+    })
+  
+  }
+
   function handleFormSubmit() {
     const finalizedListing = {
       ...listing,
       createdAt: new Date()
     }
-    setListing(new Listing("", "", "", new Date(0)));
+    setListing(new Listing("", "", "", new Date(0),""));
     setListings([...listings, finalizedListing])
   }
 
@@ -53,7 +64,9 @@ function ListingForm({listings, setListings}) {
       <h5>Create new listing</h5>
       <label>Name: <input value={listing.name} onChange={handleNameChange}/></label><br></br>
       <label>Location: <input value={listing.location} onChange={handleLocationChange}/></label><br></br>
+      <label>Price: <input value={listing.price} onChange={handlePriceChange}/></label><br></br>
       <label>Description: <textarea value={listing.description} onChange={handleDescriptionChange }/></label>
+      
       <br></br>
       <button onClick={handleFormSubmit}>
         Submit
@@ -64,7 +77,7 @@ function ListingForm({listings, setListings}) {
 
 function App() {
   const [listings, setListings] = useState([
-    new Listing("test listing 1", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Venenatis urna cursus eget nunc scelerisque viverra. Velit sed ullamcorper morbi tincidunt ornare. At lectus urna duis convallis convallis tellus id. Sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit. Viverra nibh cras pulvinar mattis nunc. Odio eu feugiat pretium nibh ipsum. Sem fringilla ut morbi tincidunt augue interdum velit euismod in. Aliquam faucibus purus in massa tempor nec feugiat nisl. Lectus mauris ultrices eros in cursus. Turpis egestas maecenas pharetra convallis. In est ante in nibh mauris cursus mattis.", "Atlanta", new Date(0))
+    new Listing("test listing 1", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Venenatis urna cursus eget nunc scelerisque viverra. Velit sed ullamcorper morbi tincidunt ornare. At lectus urna duis convallis convallis tellus id. Sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit. Viverra nibh cras pulvinar mattis nunc. Odio eu feugiat pretium nibh ipsum. Sem fringilla ut morbi tincidunt augue interdum velit euismod in. Aliquam faucibus purus in massa tempor nec feugiat nisl. Lectus mauris ultrices eros in cursus. Turpis egestas maecenas pharetra convallis. In est ante in nibh mauris cursus mattis.", "Atlanta", new Date(0), 500)
   ]);
 
 
