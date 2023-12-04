@@ -2,6 +2,9 @@ import './App.css';
 import { useState } from 'react';
 import AppRouter from './AppRouter';
 import BlueBackground from './blue.jpg';
+import Select from 'react-select';
+
+/* npm install react-native-dropdown-picker  */
 
 class Listing {
   constructor(name, description, location, createdAt, price) {
@@ -59,6 +62,7 @@ function ListingForm({listings, setListings}) {
     }
     setListing(new Listing("", "", "", new Date(0),""));
     setListings([...listings, finalizedListing])
+
   }
 
   return (
@@ -74,13 +78,33 @@ function ListingForm({listings, setListings}) {
         Submit
       </button>
     </>
-  )
+  );
 }
+
+function Listingdropdown(listings){ 
+  const sortedListings = listings.sort((a, b) => a.location < b.location ? -1 : 1)
+  return (
+    <>
+      <h2>All Listings</h2>
+      <ul>
+        {sortedListings.map((item, index) => (
+          <li key={index}>
+            {item.name} - {item.location} - {item.price}
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+}
+
+
 
 function App() {
   const [listings, setListings] = useState([
     new Listing("test listing 1", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Venenatis urna cursus eget nunc scelerisque viverra. Velit sed ullamcorper morbi tincidunt ornare. At lectus urna duis convallis convallis tellus id. Sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit. Viverra nibh cras pulvinar mattis nunc. Odio eu feugiat pretium nibh ipsum. Sem fringilla ut morbi tincidunt augue interdum velit euismod in. Aliquam faucibus purus in massa tempor nec feugiat nisl. Lectus mauris ultrices eros in cursus. Turpis egestas maecenas pharetra convallis. In est ante in nibh mauris cursus mattis.", "Atlanta", new Date(0), 500)
   ]);
+
+  const [showList, setShowList] = useState(false); //Sets the list of listings to not show up by default
 
 
   return (
@@ -90,7 +114,14 @@ function App() {
       </header>
       <ListingIndex listings={listings}></ListingIndex>
       <ListingForm listings={listings} setListings={setListings}></ListingForm>
-      <li>Hello</li>
+
+
+      <button onClick={() => setShowList(!showList)}>Toggle Listings: {showList ? 'Hide' : 'Show'}</button> {/* Button that can toggle between the listings being visible and not */}
+      {showList && Listingdropdown(listings)}
+      
+
+      
+      
     </div>
   );
 }
