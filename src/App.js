@@ -1,5 +1,7 @@
 import './App.css';
 import { useState } from 'react';
+import AppRouter from './AppRouter';
+import BlueBackground from './blue.jpg';
 
 class Listing {
   constructor(name, description, location, createdAt, price) {
@@ -82,12 +84,13 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundImage: `url(${BlueBackground})`, minHeight: '100vh', backgroundSize: 'cover', backgroundPosition: 'cover'}}>
       <header className="App-header">
         <h1>MarketHost</h1>
       </header>
       <ListingIndex listings={listings}></ListingIndex>
       <ListingForm listings={listings} setListings={setListings}></ListingForm>
+      <li>Hello</li>
     </div>
   );
 }
