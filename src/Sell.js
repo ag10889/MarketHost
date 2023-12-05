@@ -96,7 +96,7 @@ const Sell = () => {
         <div>
 
             <ListingForm listings={listings} setListings={setListings}></ListingForm>
-          /*  <h2>Welcome to the testing sell page ur mum</h2> */
+    {/*  <h2>Welcome to the testing sell page ur mum</h2> */}
         </div>
     );
 
