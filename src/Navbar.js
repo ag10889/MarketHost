@@ -6,13 +6,14 @@ const Navbar = () => {
         <>
         <Nav>
             <NavMenu>
+                <NavLink to='/Mainpage' activeStyle>
+                    Home Page
+
+                </NavLink>
                 <NavLink to='/Sell' activeStyle>
                     Sell a Listing
                     </NavLink>
-                <NavLink to='/Main' activeStyle>
-                    something else
 
-                </NavLink>
                 <NavLink to='/CurrentListings' activeStyle>
                     Current Listings 
 

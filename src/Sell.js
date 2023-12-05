@@ -94,7 +94,7 @@ const Sell = () => {
 }, []);
     return(
         <div>
-            <ListingIndex listings={listings}></ListingIndex>
+
             <ListingForm listings={listings} setListings={setListings}></ListingForm>
             <h2>Welcome to the testing sell page ur mum</h2>
         </div>

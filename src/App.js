@@ -1,14 +1,12 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-
 import BlueBackground from './blue.jpg';
-import Select from 'react-select';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Selling from './Sell';
 import Navbar from './Navbar';
-import homepage from './Home';
+import MainPage from './Mainpage';
 import CurrentListings from './CurrentListings';
-import ListingIndex from './Sell';
+
 
 /*  Run these to install the proper depencies, this assumes you already have Node.JS installed */
 /*  npm install react-native-dropdown-picker   */
@@ -127,8 +125,10 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
+          <Route path = '/Mainpage' element={<MainPage />} />
           <Route path = '/Sell' element={<Selling />} />
           <Route path = '/CurrentListings' element={<CurrentListings />} />
+  
         </Routes>
       </Router>
 

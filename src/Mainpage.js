@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Main(){
+function Mainpage(){
     return(
         <div>
             <h2>Welcome to Main Page</h2>
@@ -8,4 +8,4 @@ function Main(){
     );
 
 };
-export default Main;
+export default Mainpage;
