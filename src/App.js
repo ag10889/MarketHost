@@ -3,8 +3,10 @@ import { useState } from 'react';
 import AppRouter from './AppRouter';
 import BlueBackground from './blue.jpg';
 import Select from 'react-select';
-
-/* npm install react-native-dropdown-picker  */
+/*  Run these to install the proper depencies, this assumes you already have Node.JS installed */
+/*  npm install react-native-dropdown-picker   */
+/*  npm install react-select                   */
+/*  npm install                                */
 
 class Listing {
   constructor(name, description, location, createdAt, price) {
